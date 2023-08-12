@@ -1,5 +1,6 @@
 import Expenses from "./components/Expenses/Expense";
 import "./App.css";
+import "./output.css";
 import NewExpense from "./components/Expenses/NewExpense/Newexpense";
 import { useEffect, useState } from "react";
 import FindItems from "./api/FindItems";
