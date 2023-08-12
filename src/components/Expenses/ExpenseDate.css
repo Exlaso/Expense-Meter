@@ -1,0 +1,30 @@
+.Date-day {
+    color: white;
+    font-size: x-large;
+}
+
+.item-date {
+    color: white;
+    padding: 20px;
+}
+
+.item-date div {
+    color: white;
+}
+
+.item-date {
+    color: white;
+    border: 3px solid white;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    width: 100px;
+    margin: 20px;
+    height: 50%;
+    color: black;
+    /* background-color: aqua; */
+    padding: 10px;
+}
