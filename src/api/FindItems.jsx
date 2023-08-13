@@ -1,19 +1,26 @@
+import { toast } from 'react-toastify';
 import { FindRecordByFilter } from './Airtable';
 
 const FindItems = async (expenceset) => {
    try {
     const Record = await FindRecordByFilter('001')
-    expenceset(Record.map(e => { 
+    const Res = Record.map(e => { 
         return {
             id: e.recordId,
             name: e.Expense_title,
-            date: new Date(e.Expense_date.replace("-",",")),
+            Year: e.Year,
+            Month: e.Month,
+            Day: e.Day,
             price: e.Expense_amount
 
         }
-    }))
+    })
+    expenceset(Res)
    } catch (error) {
     console.error(error);
+if (!window.navigator.onLine) {
+toast.error("It's Seems you Don't Have an Internet Connection")    
+}
    }
     return null
 }

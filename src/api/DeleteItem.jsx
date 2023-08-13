@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { table } from "./Airtable";
 
 const DeleteItem = (id) => {
@@ -8,6 +9,7 @@ const DeleteItem = (id) => {
             return;
           } 
         }
+        toast.success("Item Removed")
         return (deletedRecords?.id);
       });
 

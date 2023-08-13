@@ -3,7 +3,9 @@ import { MinifyRecords, table } from "./Airtable";
 export const CreateItems = async ({
   recordId,
   User_id,
-  Expense_date,
+  Year,
+  Month,
+  Day,
   Expense_amount,
   Expense_title,
 }) => {
@@ -12,30 +14,35 @@ export const CreateItems = async ({
       fields: {
         recordId,
         User_id,
-        Expense_date,
         Expense_amount,
         Expense_title,
+        Year,
+        Month,
+        Day,
       },
     },
   ]);
 
-    //   [
-    //     {
-    //       recordId: "rec4ltJsSqraEBB7V",
-    //       User_id: "001",
-    //       Expense_date: "2023-08-09",
-    //       Expense_amount: 89,
-    //       Expense_title: "ejrieo",
-    //     },
-    //   ];
+  //   [
+  //     {
+  //       recordId: "rec4ltJsSqraEBB7V",
+  //       User_id: "001",
+  //       Expense_date: "2023-08-09",
+  //       Expense_amount: 89,
+  //       Expense_title: "ejrieo",
+  //     },
+  //   ];
   const record = MinifyRecords(CreateRecord);
   return record.map((e) => {
     return {
       id: e.recordId,
       name: e.Expense_title,
-      date: new Date(e.Expense_date.replace("-", ",")),
-      price: e.Expense_amount,
-    };
+      Year: e.Year,
+      Month: e.Month,
+      Day: e.Day,
+      price: e.Expense_amount
+
+  }
   });
 };
 

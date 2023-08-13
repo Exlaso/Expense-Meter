@@ -25,11 +25,14 @@ const Expenseform = (props) => {
     //   date: new Date(enteredDate),
     //   price: enteredAmount,
     // };
+    const MyDate =new Date( enteredDate)
     const Returndata= await toast.promise(
       CreateItems({
         User_id: "001",
         Expense_amount: parseInt(enteredAmount),
-        Expense_date: new Date(enteredDate),
+        Year: MyDate.getFullYear().toString(),
+        Month: (MyDate.getMonth()+1).toString(),
+        Day: MyDate.getDate().toString(),
         Expense_title: enteredtitle,
         
       }),
@@ -51,7 +54,7 @@ const Expenseform = (props) => {
     <div className="text-black">
       {formvisiblity === "0" ? (
         <button
-          className="btn text-sm text-black"
+          className="text-sm text-black btn"
           onClick={() => {
             setformvisiblity("1");
           }}
@@ -60,13 +63,13 @@ const Expenseform = (props) => {
         </button>
       ) : (
         <form onSubmit={submithandler}>
-          <h1 className="font-bold text-2xl py-5">Expense Add</h1>
+          <h1 className="py-5 text-2xl font-bold">Expense Add</h1>
           <hr className="py-5" />
           <div className="new-expense__controls">
-            <div className="flex justify-start flex-col w-full p-2 items-center gap-3">
+            <div className="flex flex-col items-center justify-start w-full gap-3 p-2">
               <label>Title</label>
               <input
-                className="p-2 w-full rounded-md"
+                className="w-full p-2 rounded-md"
                 type="text"
                 value={enteredtitle}
                 placeholder="Packets"
@@ -74,23 +77,23 @@ const Expenseform = (props) => {
                 required
               />
             </div>
-            <div className="flex justify-start flex-col w-full p-2 items-center gap-3">
+            <div className="flex flex-col items-center justify-start w-full gap-3 p-2">
               <label>Amount</label>
               <input
-                className="p-2 w-full rounded-md"
+                className="w-full p-2 rounded-md"
                 type="number"
                 min="0.01"
-                placeholder="102 (In dollars)"
+                placeholder="102 Rs"
                 step="0.01"
                 value={enteredAmount}
                 onChange={AmountchangeHandler}
                 required
               />
             </div>
-            <div className="flex justify-start flex-col w-full p-2 items-center gap-3">
+            <div className="flex flex-col items-center justify-start w-full gap-3 p-2">
               <label>Date</label>
               <input
-                className="p-2 w-full rounded-md"
+                className="w-full p-2 rounded-md"
                 type="date"
                 min="2019-01-01"
                 max="2025-12-31"
@@ -103,7 +106,7 @@ const Expenseform = (props) => {
           <div className="new-expense__actions">
             <button
               type="button"
-              className="btn text-sm"
+              className="text-sm btn"
               onClick={() => {
                 setformvisiblity("0");
               }}
@@ -114,7 +117,7 @@ const Expenseform = (props) => {
           <div className="new-expense__actions">
             <button
               type="submit"
-              className="btn text-sm"
+              className="text-sm btn"
             >
               Add Expense
             </button>

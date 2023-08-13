@@ -35,9 +35,11 @@ const ExpensesChart = (props) => {
     { label: "30", value: 0 },
     { label: "31", value: 0 },
     ];
+    
     for (const expense of props.expenses) {
-        const expenseMonth = expense.date.getDate();
-        Chartdatapoints[expenseMonth-1].value += expense.price;
+        const expenseMonth = expense?.Day;
+        console.log(expenseMonth);
+        Chartdatapoints[expenseMonth-1] .value += expense?.price;
     }
 
 

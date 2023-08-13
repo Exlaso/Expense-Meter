@@ -21,10 +21,10 @@ function ExpenseItem(props) {
 
           <div className="grid gap-1">
             <div className="text-2xl">
-              <h2>${ItemPrice}</h2>
+              <h2>{ItemPrice} ₨</h2>
             </div>
             <button
-              className="bg-slate-600 p-1 flex justify-center items-center rounded-md"
+              className="flex items-center justify-center p-1 rounded-md bg-slate-600"
               onClick={ClickHandler}
             >
               <img src="/Trash.svg" alt="Delete"  className="w-7"/>

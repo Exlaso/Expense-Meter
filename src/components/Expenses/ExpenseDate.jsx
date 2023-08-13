@@ -1,14 +1,11 @@
 import './ExpenseDate.css';
 
 export default function ExpenseDate(props) {
-   const ItemDate = props.props.date;
-    const month = ItemDate.toLocaleString('en-US', { month: 'long' });
+   const {Month, Year,Day} = props.props;
 
-    const year = ItemDate.getFullYear();
-    const day = ItemDate.toLocaleString('en-US', { day: '2-digit' });
-    return (  <div className='border rounded-lg aspect-square p-1 h-1/2 text-sm m-4'>
-    <div>{month}</div>
-    <div>{year}</div>
-    <div className="Date-day">{day}</div>
+    return (  <div className='p-1 m-4 text-sm border rounded-lg aspect-square h-1/2'>
+    <div>{Month}</div>
+    <div>{Year}</div>
+    <div className="Date-day">{Day}</div>
 </div>);
 }

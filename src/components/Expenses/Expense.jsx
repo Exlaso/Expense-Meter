@@ -8,8 +8,10 @@ import { useEffect } from "react";
 export default function Expenses(props) {
   let expenses = props.arr;
 
+
   const [selectyear, setselectedyear] = useState("2023");
   const [selectmonth, setselectmonth] = useState("1");
+  const [ShowAll, setShowAll] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("year") && localStorage.getItem("month")) {
@@ -35,11 +37,13 @@ export default function Expenses(props) {
     localStorage.setItem("month", e);
   };
   expenses = expenses.filter((e) => {
-    return (
-      e.date?.getFullYear().toString() === selectyear &&
-      e.date?.getMonth().toString() === (selectmonth - 1).toString()
-    );
+    if (ShowAll) {
+      return true
+      
+    }
+     return (e?.Year === selectyear && e?.Month === (selectmonth).toString());
   });
+  
   return (
     <div className="cont">
       <ExpensesFilter
@@ -47,6 +51,8 @@ export default function Expenses(props) {
         getvalueofmonth={getvalueofmonth}
         selectedyear={selectyear}
         selectedmonth={selectmonth}
+        ShowAll={ShowAll}
+        setShowAll ={ setShowAll}
       />
       <ExpensesChart expenses={expenses} />
       {expenses.length === 0 ? (

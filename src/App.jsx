@@ -4,12 +4,12 @@ import "./output.css";
 import NewExpense from "./components/Expenses/NewExpense/Newexpense";
 import { useEffect, useState } from "react";
 import FindItems from "./api/FindItems";
+import Nav from "./components/Nav/Nav";
 function App() {
 
 
 
-
-  const dummyexpenses = [];
+  const dummyexpenses = [  ];
   const [expenses, setexpenses] = useState(dummyexpenses);
   useEffect(() => {
     FindItems(setexpenses);
@@ -19,7 +19,7 @@ function App() {
   }, []);
   useEffect(() => {
     setexpenses((e) => {
-      return e.sort((a,b) => {return a.date.getDate - b.date.getDate})
+      return e.sort((a,b) => {return a.Day - b.Day})
     })
   
     return () => {
@@ -29,13 +29,13 @@ function App() {
   
 
   const AddexpenseHandler = (exp) => {
-    // setexpenses((e) => { return [...e,exp] });
     setexpenses((e) => {
       return [exp, ...e];
     });
   };
 
   const Deletehandler = (ID) => {
+    
     setexpenses((ex) => {
       const expens = ex.filter((e) => e.id !== ID);
       return expens;
@@ -43,8 +43,9 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App ">
+      <header className="py-10 App-header">
+      <h1>NOTE: Anybody can add, view, and remove items. </h1>
         <NewExpense getvalue={AddexpenseHandler} />
         <Expenses
           arr={expenses}
